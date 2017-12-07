@@ -1,3 +1,6 @@
 body {
     background-color: #222d32;
 }
+.login_modal {
+    margin-top: 150px;
+}
