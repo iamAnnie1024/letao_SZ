@@ -1,0 +1,84 @@
+html,body{
+    height: 100%;
+}
+
+.lt_aside {
+    width: 180px;
+    background-color: #222d32;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.lt_aside .header {
+    height: 50px;
+    background-color: rgb(54,127,169);
+    text-align: center;
+}
+.lt_aside .header a {
+    color: #ffffff;
+    font-size: 20px;
+    line-height: 50px;
+    font-weight: bold;
+}
+.lt_aside .user {
+    padding: 30px 20px;
+}
+.lt_aside .user img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+
+}
+.lt_aside .user span {
+    color: #ffffff;
+    font-size: 12px;
+}
+.lt_aside .content {
+
+}
+.lt_aside .content li {
+    border: 3px solid transparent;
+}
+.lt_aside .content li.active {
+    background-color: black;
+    border-left-color: #3c8dbc;
+}
+.lt_aside .content li.active a {
+    color: #ffffff;
+}
+.lt_aside .content li a {
+    color: #aaaaaa;
+    padding-left: 32px;
+    font-size: 14px;
+    line-height: 40px;
+}
+.lt_aside .content li a span {
+    margin-right: 5px;
+}
+.lt_aside .content li ol a {
+    font-size: 12px;
+    padding-left: 40px;
+    line-height: 30px;
+}
+/* 主体样式 */
+.lt_main {
+height: 100%;
+padding-left: 180px;
+}
+.lt_main .header {
+    height: 50px;
+    background-color: #3c8dbc;
+    padding: 0 20px;
+}
+.lt_main .header span {
+    line-height: 50px;
+    color: #ffffff;
+    font-size: 18px;
+}
+.lt_main .content {
+    padding: 30px 20px 0;
+}
+.lt_main .content ol {
+    background-color: #f5f5f5;
+}
