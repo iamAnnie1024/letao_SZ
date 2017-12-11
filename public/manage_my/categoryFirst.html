@@ -8,6 +8,8 @@
     <title>Document</title>
     <!-- 引入bootstrap的css -->
     <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.css">
+    <!-- 引入表单验证插件的css -->
+    <link rel="stylesheet" href="./lib/bootstrap-validator/css/bootstrapValidator.min.css">
     <!-- 引入自己的css样式 -->
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/index.css">
@@ -30,12 +32,12 @@
                     <a href="userManage.html">
                         <span class="glyphicon glyphicon-user"></span>用户管理</a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="javascript:void(0)">
                         <span class="glyphicon glyphicon-th-list"></span>分类管理</a>
                     <ol>
                         <li>
-                            <a href="categoryFirst.html">一级分类</a>
+                            <a style="color:white" href="categoryFirst.html">一级分类</a>
                         </li>
                         <li>
                             <a href="categorySecond.html">二级分类</a>
@@ -60,16 +62,33 @@
                     <a href="#">系统管理</a>
                 </li>
                 <li>
-                    首页
+                    分类管理
+                </li>
+                <li>
+                    一级分类
                 </li>
             </ol>
 
-            <div id="main_left" class="pull-left" style="width: 500px;height:400px;"></div>
-            <div id="main_right" class="pull-right" style="width: 500px;height:400px;right:0"></div>
+            <button data-toggle="modal" data-target=".modal-add" class="btn btn-default mb_15">添加分类</button>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>分类名称</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>户外管</td>
+                    </tr>
+                </tbody>
+            </table>
+            <ul id="pagintor"></ul>
         </div>
     </div>
 
-    <div class="modal fade bs-example-modal-sm modal-sure" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal fade modal-sure" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -89,6 +108,30 @@
         </div>
     </div>
 
+    <div class="modal fade modal-add" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">添加分类</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="firstForm">
+                        <div class="form-group">
+                            <input type="text" name="categoryName" class="form-control" id="exampleInputEmail1" placeholder="请输入一级分类名称">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" form="firstForm" class="btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>
@@ -98,6 +141,20 @@
 <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
 <!-- 引入插件的js -->
 <script src="./lib/echarts/echarts.min.js"></script>
+<!-- 引入表单验证的插件 -->
+<script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+<!-- 引入分页插件js -->
+<script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
+<!-- 引入引擎模板 -->
+<script src="./lib/artTemplate/template.js"></script>
+<script type="text/html" id="first">
+    {{each rows}}
+    <tr>
+        <td>{{(page-1)*size+1+$index}}</td>
+        <td>{{$value.categoryName}}</td>
+    </tr>
+    {{/each}}
+</script>
 <!-- 引入自己的js -->
 <script src="./js/common.js"></script>
-<script src="./js/index.js"></script>
+<script src="./js/categoryFirst.js"></script>

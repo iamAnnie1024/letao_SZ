@@ -26,7 +26,7 @@
         </div>
         <div class="content">
             <ul>
-                <li>
+                <li class="active">
                     <a href="userManage.html">
                         <span class="glyphicon glyphicon-user"></span>用户管理</a>
                 </li>
@@ -60,15 +60,37 @@
                     <a href="#">系统管理</a>
                 </li>
                 <li>
-                    首页
+                    系统管理
                 </li>
             </ol>
 
-            <div id="main_left" class="pull-left" style="width: 500px;height:400px;"></div>
-            <div id="main_right" class="pull-right" style="width: 500px;height:400px;right:0"></div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>用户名</th>
+                        <th>手机号</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>itcast</td>
+                        <td>18827514521</td>
+                        <td>正常</td>
+                        <td>
+                            <button class="btn btn-danger">禁用</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <ul id="pagintor"></ul>
         </div>
     </div>
 
+    <!-- 弹出框 -->
     <div class="modal fade bs-example-modal-sm modal-sure" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
@@ -98,6 +120,35 @@
 <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
 <!-- 引入插件的js -->
 <script src="./lib/echarts/echarts.min.js"></script>
+<!-- 引入分页的插件的js -->
+<script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
+<!-- 引入模板引擎 -->
+<script src="./lib/artTemplate/template.js"></script>
+<script type="text/html" id="user">
+    {{each rows}}
+    <tr>
+        <!-- (页码-1)*页容量 +1+$index -->
+        <td>{{(page-1)*size+1+$index}}</td>
+        <td>{{$value.username}}</td>
+        <td>{{$value.mobile}}</td>
+        <td>
+            {{if $value.isDelete == 0}}
+                正常
+            {{else}}
+                已禁用
+            {{/if}}
+        </td>
+        <td>
+            {{if $value.isDelete == 0}}
+            <button class="btn btn-primary">正常</button>
+            {{else}}
+            <button class="btn btn-danger">禁用</button>
+            {{/if}}
+        </td>
+    </tr>
+    {{/each}}
+</script>
+
 <!-- 引入自己的js -->
 <script src="./js/common.js"></script>
-<script src="./js/index.js"></script>
+<script src="./js/userManage.js"></script>
